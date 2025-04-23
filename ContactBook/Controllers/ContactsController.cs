@@ -25,5 +25,23 @@ namespace ContactBook.Controllers
 
             _repository.Add(model);
         }
+
+        public List<GetContactDto> FindByName(string firstName)
+        {
+            return _repository.FindByName(firstName);
+        }
+
+        public void Update(UpdateContactDto dto)
+        {
+            // check if contact with given id doesnt exit throw excption
+
+            Contact contact = _repository.FindById(dto.Id);
+            contact.FirstName = dto.FirstName;
+            contact.LastName = dto.LastName;
+            contact.Email = dto.Email;
+            contact.Phone = dto.Phone;
+
+            _repository.Update(contact);
+        }
     }
 }

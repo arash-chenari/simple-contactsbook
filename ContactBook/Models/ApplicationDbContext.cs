@@ -11,5 +11,10 @@ namespace ContactBook.Models
         }
 
         public DbSet<Contact> Contacts { get; set; }
+
+        public override int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
     }
 }
